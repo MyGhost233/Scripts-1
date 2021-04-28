@@ -8,6 +8,11 @@ https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-r
 
 hostname = www.xiaodouzhuan.cn
 ~~~~~~~~~~~~~~~~
+============Quantumultx===============
+[task_local]
+#聚看点签到任务
+33 */2 * * * https://raw.githubusercontent.com/MyGhost233/Scripts-1/master/Task/jukan.js, tag=聚看点签到任务, enabled=true
+
 
 */
 const $ = new Env('聚看点')
