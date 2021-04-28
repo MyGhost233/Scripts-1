@@ -12,9 +12,10 @@ hostname = www.xiaodouzhuan.cn
 [task_local]
 #聚看点签到任务
 33 */2 * * * https://raw.githubusercontent.com/MyGhost233/Scripts-1/master/Task/jukan.js, tag=聚看点签到任务, enabled=true
-
+cron "33 */2 * * *" script-path=https://raw.githubusercontent.com/MyGhost233/Scripts-1/master/Task/jukan.js,tag=聚看点签到任务
 
 */
+
 const $ = new Env('聚看点')
 const drawcash = $.getdata('jukan_cash') || "30" //提现金额
 const wxname = $.getdata('jukan_name') || ""//微信真实名字，可以在双引号内填入
