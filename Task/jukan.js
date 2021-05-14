@@ -5,6 +5,8 @@
 https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-request-body jukan.js
 
 可自动提现，提现需填写微信真实姓名，设置提现金额，默认30，此设置可以boxjs内完成，也可本地配置
+[task_local]
+13 0-23/2 * * * https://gitee.com/MyGhost233/HeHe/raw/other/task/jukan.js, tag=jukan, enabled=true
 
 hostname = www.xiaodouzhuan.cn
 ~~~~~~~~~~~~~~~~
