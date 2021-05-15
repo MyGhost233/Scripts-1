@@ -5,11 +5,13 @@
 https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-request-body jukan.js
 
 可自动提现，提现需填写微信真实姓名，设置提现金额，默认30，此设置可以boxjs内完成，也可本地配置
+[task_local]
+13 0-23/2 * * * https://gitee.com/MyGhost233/HeHe/raw/other/task/jukan.js, tag=jukan, enabled=true
 
 hostname = www.xiaodouzhuan.cn
 ~~~~~~~~~~~~~~~~
-
 */
+
 const $ = new Env('聚看点')
 const drawcash = $.getdata('jukan_cash') || "30" //提现金额
 const wxname = $.getdata('jukan_name') || ""//微信真实名字，可以在双引号内填入
@@ -19,7 +21,7 @@ let signtimes = $.getdata('jukan_times')
 let cashout = $.getdata('jukan_out')|| false
 let UA = 'JuKanDian/5.6.5 (iPhone; iOS 14.2; Scale/3.00)'
 let taskresult = "",sumnotify ="";
-let calendarpic = "";
+
 if ($.isNode()) {
   if (process.env.JUKAN_BODY && process.env.JUKAN_BODY.indexOf('&') > -1) {
   JKbody = process.env.JUKAN_BODY.split('&');
@@ -59,7 +61,7 @@ if (typeof $request !== 'undefined') {
 !(async() => {
   if (!BodyArr[0]) {
     console.log($.name, '【提示】请把聚看点Cookie填入Github 的 Secrets 中，请以&或者换行隔开')
-    $.done();
+    return;
   }
   console.log(`您共提供${BodyArr.length}个聚看点账号Cookie\n————————————————————————————————————\n`)
   for (let i = 0; i < BodyArr.length; i++) {
@@ -183,7 +185,7 @@ function signShare() {
      if (sign_share.ret == "ok"){
        $.log("签到分享收益: +"+sign_share.profit)
         await Stimulate("23")
-        //await invite()
+        await invite()
          }  else {
        $.log(sign_share.rtn_msg)
      }
